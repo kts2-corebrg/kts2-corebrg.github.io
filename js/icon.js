@@ -3,11 +3,9 @@ var ITAhM = ITAhM || {};
 ITAhM.iconData = {
     "unknown": {
         "group": "etc",
-        "src": "/img/svg/unknown.svg",
-        "disabled": "/img/svg/disabled/unknown.svg",
-        unit: 1,
-        color: "0xdddddd",
-        texture: ""
+        "src": "/img/kts/normal/unknown.png",
+        "disabled": "/img/kts/disabled/unknown.png",
+        "shutdown": "/img/kts/shutdown/unknown.png"
     },
     /** SOS **/
     "group": {
