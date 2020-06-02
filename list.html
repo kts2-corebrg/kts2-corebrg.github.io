@@ -369,22 +369,26 @@ function initialize() {
 function createRow(id, node) {
 	var
 		row = document.createElement("ul"),
-		type, labels, label;
+		type, labels, label, icon;
         
-    if ("type" in node) {
-        if (window.iconData[node.type].group === "group") {
-            return;
-        }
+    if ("type" in node === false) {
+        node.type = "unknown";
+
+        icon = window.iconData["unknown"];
     } else {
-		node.type = "unknown";
-	}
-	
+        icon = window.iconData[node.type] || window.iconData["unknown"];
+    }    
+    
+    if (icon.group === "group") {
+        return;
+    }
+    
     row.appendChild(document.createElement("li")); // N.1
 	row.appendChild(document.createElement("li")).textContent = node.ip || ""; // N.2
 
 	type = document.createElement("li");
 	type.dataset.type = node.type;
-	type.style.backgroundImage = "url('"+ window.iconData[node.type].src +"')";
+	type.style.backgroundImage = `url(${icon.src})`;
 	
 	row.appendChild(type); // N.3
 	
