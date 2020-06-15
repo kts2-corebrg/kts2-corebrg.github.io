@@ -446,6 +446,13 @@ function showMessage(xhr) {
 					</select>
 					<input type="submit" value="적용" class="root">
 				</form>
+            </p>
+            <p>
+				<form id="title">
+					사업장 표시:
+					<input type="text" name="title">
+					<input type="submit" value="적용" class="root">
+				</form>
 			</p>
 			<div class="bg_loading"></div>
 		</div>
@@ -950,6 +957,12 @@ function initInformation() {
         }
 	};
 
+    document.getElementById("title").onsubmit = function (e) {
+		e.preventDefault();
+		
+		postRequest("title", this.elements["title"].value);
+	};
+
     window.initSetting = function () {
         switch (this.status) {
             case 200:
@@ -983,6 +996,10 @@ function initInformation() {
 
                 if ("mute" in settingData) {
                     document.getElementById("mute").querySelector("[name=mute]").value = settingData.mute;
+                }
+
+                if ("title" in settingData) {
+                    document.getElementById("title").querySelector("[name=title]").value = settingData.title;
                 }
 
                 container.classList.remove("loading");

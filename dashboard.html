@@ -197,6 +197,14 @@ div.nav.hide +#summary_list {
     cursor: pointer;
 }
 
+.olleh:not(:empty) {
+    font: 1.6em Droid Sans Fallback;
+    font-weight: bolder;
+    padding: 0 1em;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #4f4f4f;
+}
+
 /* bounce >> */
 .bounce {
 	position: relative;
@@ -428,6 +436,7 @@ function showMessage(xhr) {
             <span class="icon" title="상위 이동" id="exit">
                 &#xf2f5;
             </span>
+            <span class="olleh"></span>
         </nav>
 		<article>
 			<aside>
@@ -887,6 +896,10 @@ function initSetting(e) {
                 document.body.style.backgroundImage = "url("+ $.settingData.background +")";
 
                 document.body.classList.add("background");
+            }
+
+            if ("title" in $.settingData) {
+                document.body.querySelector(".olleh").textContent = $.settingData.title;
             }
 
             if ("display" in $.settingData && $.settingData.display === "address") {
